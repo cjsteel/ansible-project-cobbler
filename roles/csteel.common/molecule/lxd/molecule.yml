@@ -1,0 +1,42 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: lxd
+lint:
+  name: yamllint
+platforms:
+  - name: common-xenial
+    source:
+      type: image
+      alias: ubuntu/xenial/amd64
+    architecture: x86_64
+    devices:
+      zfs:
+        path: /dev/zfs
+        type: unix-char
+    profiles:
+      - default
+      - nested
+  - name: common-bionic
+    source:
+      type: image
+      alias: ubuntu/bionic/amd64
+    architecture: x86_64
+    devices:
+      zfs:
+        path: /dev/zfs
+        type: unix-char
+    profiles:
+      - default
+      - nested
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: lxd
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

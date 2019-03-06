@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+#  - name: common-xenial
+#    box: cjsteel/xenial
+#    version: 20190116.0.1
+#    memory: 2048
+#    cpus: 2
+#    provider_raw_config_args:
+#      - "customize [ 'modifyvm', :id, '--uartmode1', 'disconnected' ]"
+  - name: common-bionic
+    box: cjsteel/bionic
+    version: 20190115.0.1
+    memory: 2048
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: vagrant
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

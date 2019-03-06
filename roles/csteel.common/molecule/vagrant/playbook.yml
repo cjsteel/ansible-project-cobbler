@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    - virtualbox_deployment_users_home: /home/vagrant
+    - virtualbox_testing_provider: vagrant
+  roles:
+    - role: csteel.common

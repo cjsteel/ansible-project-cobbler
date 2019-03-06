@@ -1,0 +1,11 @@
+---
+# tasks file for csteel.common
+
+- name: Run role cjsteel.providers to setup molecule providers for calling role
+  include_role:
+    name: cjsteel.providers
+  vars:
+    providers_role_short_name: 'common'
+    providers_role_owner: 'csteel'
+    providers_project_directory: '/home/csteel/projects/development/cobbler/roles/{{ providers_role_owner }}.{{ providers_role_short_name }}'
+
